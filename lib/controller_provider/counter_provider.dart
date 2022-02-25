@@ -18,7 +18,7 @@ class Counter with ChangeNotifier {
   }
 
   void resetar() {
-    _count =0;
+    _count = 0;
     notifyListeners();
   }
 

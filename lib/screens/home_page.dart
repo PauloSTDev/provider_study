@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home Page Provider"),
+        title: const Text("Home Page Provider"),
         backgroundColor: Theme.of(context).primaryColor,
         centerTitle: true,
       ),
@@ -25,7 +25,9 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              Provider.of<Counter>(context, listen: false).decrementar();
+            },
             key: const Key("decremento_FloatingActionButton"),
             tooltip: "Decrementar",
             child: const Icon(Icons.remove),
