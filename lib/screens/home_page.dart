@@ -34,7 +34,9 @@ class HomePage extends StatelessWidget {
           ),
           const SizedBox(width: 10.0,),
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              Provider.of<Counter>(context, listen: false).resetar();
+            },
             key: const Key("reset_FloatingActionButton"),
             tooltip: "Reset",
             child: const Icon(Icons.exposure_zero),
