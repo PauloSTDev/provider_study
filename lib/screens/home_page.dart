@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:provider_study/controller_provider/counter_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,13 +14,11 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Número de vezes que este botão foi clicado:"),
-
-          ],
+        //Apresentando valor atualizado do counter
+        child: Consumer<Counter>(
+            builder: (context, value, child) {
+              return Text(value.count.toString());
+            },
         ),
       ),
       floatingActionButton: Row(
@@ -39,7 +39,10 @@ class HomePage extends StatelessWidget {
           ),
           const SizedBox(width: 10.0,),
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              //Realizando as mudanças de State, incrementando valor
+              Provider.of<Counter>(context, listen: false).incrementar();
+            },
             key: const Key("incremento_FloatingActionButton"),
             tooltip: "Incremento",
             child: const Icon(Icons.add),
