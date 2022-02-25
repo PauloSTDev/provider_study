@@ -12,6 +12,14 @@ class HomePage extends StatelessWidget {
         title: const Text("Home Page Provider"),
         backgroundColor: Theme.of(context).primaryColor,
         centerTitle: true,
+        actions: [
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "second");
+              },
+              child: const Icon(Icons.arrow_forward),
+          ),
+        ],
       ),
       body: Center(
         //Apresentando valor atualizado do counter
