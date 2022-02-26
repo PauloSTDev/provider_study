@@ -35,14 +35,14 @@ class MaterialAppWithTheme extends StatelessWidget {
   Widget build(BuildContext context){
     final theme = Provider.of<ThemeController>(context);
     return MaterialApp(
+      title: 'Study Provider',
+      debugShowCheckedModeBanner: false,
       theme: theme.getTheme(),
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePage(),
         "shopping_cart": (context) => const ShopppingCartPage(),
       },
-      title: 'Study Provider',
-      debugShowCheckedModeBanner: false,
     );
   }
 }
