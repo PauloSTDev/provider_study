@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_study/controller_provider/counter_provider.dart';
 import 'package:provider_study/controller_provider/shopping_cart_provider.dart';
+import 'package:provider_study/controller_provider/theme_controller.dart';
 import 'package:provider_study/screens/home_page.dart';
-import 'package:provider_study/screens/second_page.dart';
+import 'package:provider_study/screens/shopping_cart_page.dart';
 
 void main() {
   runApp(
@@ -22,17 +23,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    return ChangeNotifierProvider<ThemeController>(
+      create: (_)=>ThemeController(ThemeData.light()),
+      child: MaterialAppWithTheme(),
+    );
+  }
+}
+
+class MaterialAppWithTheme extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+    final theme = Provider.of<ThemeController>(context);
     return MaterialApp(
+      theme: theme.getTheme(),
       initialRoute: '/',
       routes: {
-        '/': (context) => HomePage(),
-        "second": (context) => SecondPage(),
+        '/': (context) => const HomePage(),
+        "shopping_cart": (context) => const ShopppingCartPage(),
       },
-      title: 'Flutter Demo',
+      title: 'Study Provider',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.cyan,
-      ),
     );
   }
 }

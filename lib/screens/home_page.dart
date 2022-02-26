@@ -1,12 +1,17 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_study/controller_provider/counter_provider.dart';
+import 'package:provider_study/controller_provider/theme_controller.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ThemeController _themeController = Provider.of<ThemeController>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Home Page Provider"),
@@ -15,7 +20,7 @@ class HomePage extends StatelessWidget {
         actions: [
           ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, "second");
+                Navigator.pushNamed(context, "shopping_cart");
               },
               child: const Icon(Icons.arrow_forward),
           ),
@@ -32,6 +37,14 @@ class HomePage extends StatelessWidget {
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          ElevatedButton(
+            child: const Icon(Icons.account_circle_outlined),
+            onPressed: () => _themeController.setTheme(ThemeData.light()),
+          ),
+          ElevatedButton(
+            child: const Icon(Icons.account_circle_rounded),
+            onPressed: () => _themeController.setTheme(ThemeData.dark()),
+          ),
           FloatingActionButton(
             onPressed: () {
               Provider.of<Counter>(context, listen: false).decrementar();

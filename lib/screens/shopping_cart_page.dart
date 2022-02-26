@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:provider_study/controller_provider/counter_provider.dart';
 import 'package:provider_study/controller_provider/shopping_cart_provider.dart';
 
-class SecondPage extends StatelessWidget {
-  const SecondPage({Key? key}) : super(key: key);
+class ShopppingCartPage extends StatelessWidget {
+  const ShopppingCartPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,21 +15,19 @@ class SecondPage extends StatelessWidget {
       ),
       body: Center(
         //Apresentando valor atualizado do counter
-        child: Container(
-          child: Column(
-            children: [
-              Consumer<ShoppingCartProvider>(
-                builder: (context, value, child) {
-                  return Text("Número de items: "+value.cartCount.toString());
-                },
-              ),
-              Consumer<ShoppingCartProvider>(
-                builder: (context, value, child) {
-                  return Text("Items: "+value.cart.toString());
-                },
-              ),
-            ],
-          ),
+        child: Column(
+          children: [
+            Consumer<ShoppingCartProvider>(
+              builder: (context, value, child) {
+                return Text("Número de items: "+value.cartCount.toString());
+              },
+            ),
+            Consumer<ShoppingCartProvider>(
+              builder: (context, value, child) {
+                return Text("Items: "+value.cart.toString());
+              },
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
