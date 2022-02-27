@@ -15,9 +15,7 @@ class HomePage extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-
-          ],
+          children: [],
         ),
       ),
       appBar: AppBar(
@@ -45,7 +43,23 @@ class HomePage extends StatelessWidget {
         //Apresentando valor atualizado do counter
         child: Consumer<Counter>(
           builder: (context, value, child) {
-            return Text(value.count.toString());
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(value.count.toString()),
+                const SizedBox(height: 10.0,),
+                TextButton(
+                    onPressed: () =>
+                        Navigator.pushNamed(context, "shopping_cart"),
+                    child: const Text("Next Page"),
+                  style: TextButton.styleFrom(
+                    primary: Theme.of(context).primaryColorDark,
+                    backgroundColor: Theme.of(context).primaryColorLight,
+                  ),
+                ),
+              ],
+            );
           },
         ),
       ),
