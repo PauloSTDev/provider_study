@@ -25,14 +25,14 @@ class HomePage extends StatelessWidget {
         actions: [
           TextButton(
             child: const Icon(Icons.account_circle_rounded),
-            onPressed: () => _themeController.setTheme(ThemeData.light()),
+            onPressed: () => _themeController.setTheme(ThemeData(primarySwatch: Colors.red)),
             style: TextButton.styleFrom(
               primary: Colors.white,
             ),
           ),
           TextButton(
             child: const Icon(Icons.account_circle_rounded),
-            onPressed: () => _themeController.setTheme(ThemeData.dark()),
+            onPressed: () => _themeController.setTheme(ThemeData(primarySwatch: Colors.indigo)),
             style: TextButton.styleFrom(
               primary: Colors.black,
             ),

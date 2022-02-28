@@ -8,13 +8,11 @@ import 'package:provider_study/screens/shopping_cart_page.dart';
 
 void main() {
   runApp(
-    MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => Counter()),
-          ChangeNotifierProvider(create: (_) => ShoppingCartProvider()),
-        ],
-        child: const MyApp()),
-    );
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (_) => Counter()),
+      ChangeNotifierProvider(create: (_) => ShoppingCartProvider()),
+    ], child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -24,7 +22,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ThemeController>(
-      create: (_)=>ThemeController(ThemeData.light()),
+      create: (_) => ThemeController(
+          ThemeData(primarySwatch: Colors.green)),
       child: MaterialAppWithTheme(),
     );
   }
@@ -32,7 +31,7 @@ class MyApp extends StatelessWidget {
 
 class MaterialAppWithTheme extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     final theme = Provider.of<ThemeController>(context);
     return MaterialApp(
       title: 'Study Provider',
